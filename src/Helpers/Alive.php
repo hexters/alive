@@ -40,7 +40,7 @@ class Alive
     {
         $menus = [];
         foreach (module_path_lists() as $path) {
-            if (file_exists($kernel = "{$path}/Menus/kernel.php")) {
+            if (file_exists($kernel = "{$path}/Access/default.php")) {
                 $classes = require($kernel);
                 foreach ($classes as $divider => $class) {
 

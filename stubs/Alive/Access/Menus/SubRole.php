@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\Alive\Menus;
+namespace Modules\Alive\Access\Menus;
 
 use Hexters\Alive\Supports\AliveMenu;
 
-class CuRole extends AliveMenu
+class SubRole extends AliveMenu
 {
     protected $gate = 'role.index';
 
-    protected $name = 'Cucu Role';
+    protected $name = 'Sub Role';
 
     protected $description = 'Admin can view a list of roles';
     
@@ -20,6 +20,13 @@ class CuRole extends AliveMenu
     protected function route()
     {
         return '';
+    }
+
+    protected function submenus()
+    {
+        return [
+            CuRole::class,
+        ];
     }
     
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Alive\Menus;
+namespace Modules\Alive\Access\Menus;
 
 use Hexters\Alive\Supports\AliveMenu;
 use Hexters\Alive\Supports\Permission;

@@ -1,6 +1,6 @@
 <?php
 
-use Modules\Alive\Menus\Role;
+use Modules\Alive\Access\Menus\Role;
 
 return [
 
