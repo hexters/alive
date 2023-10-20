@@ -26,8 +26,8 @@ class Permission
     {
         return [
             'gate' => $this->gate,
-            'name' => $this->name,
-            'description' => $this->description,
+            'name' => __($this->name),
+            'description' => __($this->description),
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Modules\Alive\Access\Menus;
 
-use Hexters\Alive\Supports\AliveMenu;
+use Hexters\Alive\Foundation\AliveMenu;
 
 class CuRole extends AliveMenu
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hexters\Alive\Supports;
+namespace Hexters\Alive\Foundation;
 
 abstract class AliveMenu
 {
@@ -59,8 +59,8 @@ abstract class AliveMenu
         return [
             'type' => 'menu',
             'gate' => $this->gate,
-            'name' => $this->name,
-            'description' => $this->description,
+            'name' => __($this->name),
+            'description' => __($this->description),
             'target' => $this->target,
             'icon' => $this->icon(),
             'route' => $this->route(),

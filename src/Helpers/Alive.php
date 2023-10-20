@@ -39,10 +39,10 @@ class Alive
     public function menus()
     {
         $menus = [];
-        foreach (module_path_lists() as $path) {
-            if (file_exists($kernel = "{$path}/Access/default.php")) {
-                $classes = require($kernel);
-                foreach ($classes as $divider => $class) {
+        foreach (module_name_lists() as $module) {
+            if (class_exists($class = "Modules\\{$module}\\Access\\Kernel")) {
+                $defaults = app($class)->default();
+                foreach ($defaults as $divider => $class) {
 
                     if (!is_numeric($divider)) {
                         $menus[] = $this->divider($divider);
@@ -70,7 +70,27 @@ class Alive
         ];
     }
 
-    public function gates()
+    public function gates($menus)
     {
+
+        $gates = [];
+        foreach ($menus as $menu) {
+            if ($menu['type'] == 'menu') {
+                $gates[] = $menu['gate'];
+
+                foreach ($menu['permissions'] as $permission) {
+                    $gates[] = $permission['gate'];
+                }
+
+                if (count($menu['submenu']) > 0) {
+                    $gates = [
+                        ...$gates,
+                        ...$this->gates($menu['submenu'])
+                    ];
+                }
+            }
+        }
+
+        return $gates;
     }
 }
