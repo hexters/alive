@@ -1,0 +1,34 @@
+{
+    "name": "hexters/alive",
+    "type": "library",
+    "description": "",
+    "license": "MIT",
+    "keywords": [
+        "Laravel Admin",
+        "Laravel",
+        "Ladmin Package"
+    ],
+    "authors": [
+        {
+            "name": "Asep",
+            "email": "hexters@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hexters\\Alive\\": "src/"
+        },
+        "files": [
+            "src/Helpers/functions.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hexters\\Alive\\AliveServiceProvider"
+            ],
+            "aliases": []
+        }
+    },
+    "require": {}
+}

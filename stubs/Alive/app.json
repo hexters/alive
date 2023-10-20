@@ -1,0 +1,12 @@
+{
+    "name": "alive",
+    "namespace": "Modules\\Alive\\",
+    "author": "asep <hello@example.com>",
+    "description": "",
+    "providers": [
+        "Modules\\Alive\\Providers\\AliveServiceProvider",
+        "Modules\\Alive\\Providers\\EventServiceProvider",
+        "Modules\\Alive\\Providers\\RouteServiceProvider"
+    ],
+    "status": "enabled"
+}
