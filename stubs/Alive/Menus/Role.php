@@ -3,6 +3,7 @@
 namespace Modules\Alive\Menus;
 
 use Hexters\Alive\Supports\AliveMenu;
+use Hexters\Alive\Supports\Permission;
 
 class Role extends AliveMenu
 {
@@ -26,6 +27,13 @@ class Role extends AliveMenu
     {
         return [
             SubRole::class,
+        ];
+    }
+
+    protected function permissions()
+    {
+        return [
+            Permission::make('role.create', 'Add new Role', 'Admin can add new role'),
         ];
     }
 }

@@ -43,6 +43,17 @@ abstract class AliveMenu
         return $submenus;
     }
 
+    public function getPermissions()
+    {
+        $permissions = [];
+
+        foreach ($this->permissions() as $render) {
+            $permissions[] = $render;
+        }
+
+        return $permissions;
+    }
+
     public function render()
     {
         return [

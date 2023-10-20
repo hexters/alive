@@ -20,7 +20,7 @@ class AccountSeed extends Seeder
         $role = AliveRole::create([
             'name' => 'Super User',
             'description' => '',
-            'menus' => [],
+            'menus' => alive()->menus(),
             'gates' => [],
         ]);
 
