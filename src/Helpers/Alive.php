@@ -44,13 +44,9 @@ class Alive
                 $defaults = app($class)->default();
                 foreach ($defaults as $divider => $class) {
 
-                    if (!is_numeric($divider)) {
-                        $menus[] = $this->divider($divider);
-                    }
-
                     if (is_array($class)) {
-                        foreach ($class as $cls) {
-                            $menus[] = app($cls)->render();
+                        foreach ($class as $i => $cls) {
+                            $menus[] = app($cls)->render( $i == 0 ? $divider : null);
                         }
                     } else {
                         $menus[] = app($class)->render();

@@ -4,15 +4,13 @@ namespace Modules\Alive\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Hexters\Alive\Models\AliveAdmin;
 use Hexters\Alive\Models\UlidGenerator;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Modules\Alive\Menus\Role;
 
-class AliveAccount extends Authenticatable
+class AliveAccount extends AliveAdmin
 {
     use HasApiTokens, HasFactory, Notifiable, UlidGenerator;
 
@@ -65,16 +63,5 @@ class AliveAccount extends Authenticatable
     {
         return \Modules\Alive\Databases\Factories\AliveAccountFactory::new();
     }
-
-    public function avatar(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => is_null($this->profile_pic) ? 'https://www.gravatar.com/avatar/' . hash('sha256', $this->email) : $this->profile_pic
-        );
-    }
-
-    public function roles()
-    {
-        return $this->belongsToMany(AliveRole::class, 'alive_role_user');
-    }
+    
 }

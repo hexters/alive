@@ -8,7 +8,6 @@ class Welcome extends Component
 {
     public function render()
     {
-
         return view('alive::livewire.welcome');
     }
 }

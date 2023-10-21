@@ -8,10 +8,13 @@ use Modules\Alive\Access\Menus\Role;
 class Kernel extends MenuKernel
 {
     protected $menuDefault = [
+        
+        // You can also store them without dividers
+        // Role::class,
 
-        Role::class,
-
-        '' => [
+        // Menu list with dividers
+        // The divider must be uniq so that the menu displayed is not mixed.
+        'Application' => [ 
             Role::class,
         ],
 

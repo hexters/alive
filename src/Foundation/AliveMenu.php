@@ -54,10 +54,12 @@ abstract class AliveMenu
         return $permissions;
     }
 
-    public function render()
+    public function render($divider = null)
     {
         return [
             'type' => 'menu',
+            'open' => false,
+            'divider' => $divider,
             'gate' => $this->gate,
             'name' => __($this->name),
             'description' => __($this->description),

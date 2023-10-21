@@ -1,7 +1,7 @@
 <div class="bg-neutral text-neutral-content duration-300 {{ $hide ? 'w-[50px]' : 'w-[250px]' }} min-h-full">
 
     <div class="hidden lg:flex justify-between items-center p-4 mb-4">
-        <strong class="text-xl">{{ $hide ? '' : config('app.name') }}</strong>
+        <strong class="text-xl truncate">{{ $hide ? Str::of(config('app.name'))->substr(0,1) : config('app.name') }}</strong>
         <label class="btn -me-8 btn-sm btn-circle swap swap-rotate">
 
             <!-- this hidden checkbox controls the state -->
@@ -25,5 +25,26 @@
         </label>
     </div>
 
-    
+
+    @php
+        $permissions = $user->permissions();
+        $renderMenu = function ($menus, $isSubmenu) use (&$renderMenu, $permissions, $hide) {
+            $html = '';
+            foreach ($menus as $i => $menu) {
+                if ($menu['type'] == 'menu') {
+                    if (in_array($menu['gate'], $permissions)) {
+                        $html .= view('alive::components.components.menu', [ ...$menu, 'renderMenu' => $renderMenu, 'hide' => $hide, 'isSubmenu' => $isSubmenu, 'i' => $i]);
+                    }
+                    $i++;
+                }
+            }
+
+            return $html;
+        };
+    @endphp
+
+
+    <ul>
+        {!! $renderMenu($user->menus(), false) !!}
+    </ul>
 </div>

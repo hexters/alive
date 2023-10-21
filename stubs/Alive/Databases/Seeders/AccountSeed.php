@@ -27,10 +27,18 @@ class AccountSeed extends Seeder
             'gates' => alive()->gates($menus),
         ]);
 
+        $role2 = AliveRole::create([
+            'name' => 'member',
+            'description' => '',
+            'menus' => $menus = alive()->menus(),
+            'gates' => alive()->gates($menus),
+        ]);
+
         AliveAccount::factory(3)
             ->create()
-            ->each(function (AliveAccount $account) use ($role) {
+            ->each(function (AliveAccount $account) use ($role, $role2) {
                 $account->roles()->attach($role);
+                $account->roles()->attach($role2);
             });
 
         info('ADMIN ACCOUNTS');
