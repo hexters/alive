@@ -20,6 +20,11 @@ class Access extends AliveMenu
         </svg>';
     }
 
+    protected function badge()
+    {
+        return [9, 'badge badge-sm badge-error text-white'];
+    }
+    
     protected function route()
     {
         return '';

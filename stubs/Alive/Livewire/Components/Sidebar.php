@@ -13,7 +13,7 @@ class Sidebar extends Component
 {
 
     public $hide = false;
-
+    
     public $menus = [];
 
     public AliveAccount $user;
@@ -44,7 +44,7 @@ class Sidebar extends Component
 
     protected function initMenu()
     {
-        $this->menus = $this->initMenuProcess(auth()->user()->menus());
+        $this->menus = $this->initMenuProcess($this->user->menus());
     }
 
     protected function initMenuProcess($menus)

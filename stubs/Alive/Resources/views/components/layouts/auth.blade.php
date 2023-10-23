@@ -43,7 +43,7 @@
             <label for="admin-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
 
             <div class="lg:hidden min-h-screen bg-neutral text-neutral-content">
-                <livewire:alive-sidebar lazy :user="$user" />
+                <livewire:alive-sidebar :user="$user" />
             </div>
 
         </div>

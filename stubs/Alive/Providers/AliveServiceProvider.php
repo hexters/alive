@@ -2,8 +2,8 @@
 
 namespace Modules\Alive\Providers;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
-use Livewire\Component;
 use Livewire\Livewire;
 use Modules\Alive\Livewire\Components\Flash;
 use Modules\Alive\Livewire\Components\Navbar;
@@ -14,7 +14,7 @@ class AliveServiceProvider extends ServiceProvider
     /**
      * Register services.
      *
-     * @return void
+     * @return array
      */
     public function register()
     {
@@ -45,15 +45,17 @@ class AliveServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register register livewire component
+     * Define livewire component
      *
      * @return void
      */
-    protected function registerLivewireComponents()
+    protected function defineLivewireComponents(): array
     {
-        Livewire::component('alive-navbar', Navbar::class);
-        Livewire::component('alive-sidebar', Sidebar::class);
-        Livewire::component('alive-flash', Flash::class);
+        return [
+            Navbar::class,
+            'sidebar' => Sidebar::class,
+            'flash' => Flash::class,
+        ];
     }
 
     /**
@@ -111,5 +113,22 @@ class AliveServiceProvider extends ServiceProvider
     protected function registerTranslations()
     {
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'alive');
+    }
+
+    /**
+     * Register register livewire component
+     *
+     * @return void
+     */
+    protected function registerLivewireComponents()
+    {
+        foreach ($this->defineLivewireComponents() as $alias => $component) {
+            if (is_numeric($alias)) {
+                $name = Str::of(collect(explode('\\', $component))->pop())->snake('-');
+                Livewire::component("alive-{$name}", $component);
+            } else {
+                Livewire::component("alive-{$alias}", $component);
+            }
+        }
     }
 }

@@ -21,7 +21,10 @@ abstract class AliveMenu
 
     protected function badge()
     {
-        return 0;
+        /**
+         * [count, class]
+         */
+        return [0, 'badge badge-sm badge-error text-white'];
     }
 
     protected function submenus()
@@ -58,7 +61,10 @@ abstract class AliveMenu
 
     public function getBadge()
     {
-        return $this->badge();
+        return [
+            'count' => $this->badge()[0] ?? 0,
+            'class' => $this->badge()[1] ?? ''
+        ];
     }
 
     public function render($divider = null)
@@ -78,7 +84,6 @@ abstract class AliveMenu
             'target' => $this->target,
             'icon' => $this->icon(),
             'url' => $this->route(),
-            'badge' => $this->badge(),
             'submenu' => $this->getSubmenus(),
             'permissions' => $this->permissions(),
         ];
