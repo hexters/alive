@@ -1,4 +1,4 @@
-<div class="bg-neutral text-neutral-content duration-300 {{ $hide ? 'w-[50px]' : 'w-[250px]' }} min-h-full">
+<div class="bg-neutral text-neutral-content duration-300 {{ $hide ? 'w-[57px]' : 'w-[250px]' }} min-h-full">
 
     <div class="hidden lg:flex justify-between items-center p-4 mb-4">
         <strong class="text-xl truncate">{{ $hide ? Str::of(config('app.name'))->substr(0,1) : config('app.name') }}</strong>
@@ -33,7 +33,7 @@
             foreach ($menus as $i => $menu) {
                 if ($menu['type'] == 'menu') {
                     if (in_array($menu['gate'], $permissions)) {
-                        $html .= view('alive::components.components.menu', [ ...$menu, 'renderMenu' => $renderMenu, 'hide' => $hide, 'isSubmenu' => $isSubmenu, 'i' => $i]);
+                        $html .= view('alive::components.components.menu', [ 'menu' => $menu, 'renderMenu' => $renderMenu, 'hide' => $hide, 'isSubmenu' => $isSubmenu, 'i' => $i]);
                     }
                     $i++;
                 }
@@ -44,7 +44,7 @@
     @endphp
 
 
-    <ul>
-        {!! $renderMenu($user->menus(), false) !!}
+    <ul class="mx-2">
+        {!! $renderMenu($menus, false) !!}
     </ul>
 </div>

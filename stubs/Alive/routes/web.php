@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Alive\Livewire\Role;
 use Modules\Alive\Livewire\Welcome;
 
 /*
@@ -16,4 +17,5 @@ use Modules\Alive\Livewire\Welcome;
 
 alive()->route(function () {
     Route::get('/', Welcome::class)->name('welcome');
+    Route::get('/role', Role::class)->name('role');
 });

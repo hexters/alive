@@ -1,5 +1,5 @@
 <div>
-    <div class="flex justify-between items-center py-2 px-4 gap-4 shadow-md">
+    <div class="flex justify-between items-center py-2 px-4 gap-4 bg-transparent">
         <div>
             <label for="admin-drawer" class="btn btn-ghost drawer-button lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

@@ -2,6 +2,8 @@
 
 namespace Hexters\Alive\Foundation;
 
+use Illuminate\Support\Str;
+
 abstract class AliveMenu
 {
 
@@ -19,7 +21,7 @@ abstract class AliveMenu
 
     protected function badge()
     {
-        return null;
+        return 0;
     }
 
     protected function submenus()
@@ -54,18 +56,28 @@ abstract class AliveMenu
         return $permissions;
     }
 
+    public function getBadge()
+    {
+        return $this->badge();
+    }
+
     public function render($divider = null)
     {
+        $path = Str::of($this->route())->replace(config('app.url'), '')->ltrim('/');
+
         return [
+            'id' => (string) Str::ulid(),
             'type' => 'menu',
             'open' => false,
+            'path' => $path,
             'divider' => $divider,
             'gate' => $this->gate,
             'name' => __($this->name),
             'description' => __($this->description),
+            'source' => $this::class,
             'target' => $this->target,
             'icon' => $this->icon(),
-            'route' => $this->route(),
+            'url' => $this->route(),
             'badge' => $this->badge(),
             'submenu' => $this->getSubmenus(),
             'permissions' => $this->permissions(),
