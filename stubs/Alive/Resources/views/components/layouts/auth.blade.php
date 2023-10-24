@@ -28,7 +28,6 @@
 
                     <livewire:alive-navbar :user="$user">
                         <livewire:alive-flash />
-
                         <div class="container mx-auto p-4 min-h-screen">
                             {{ $slot }}
                         </div>

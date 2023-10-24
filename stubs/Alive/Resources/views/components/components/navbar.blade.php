@@ -1,13 +1,15 @@
 <div>
     <div class="flex justify-between items-center py-2 px-4 gap-4 bg-transparent">
-        <div>
-            <label for="admin-drawer" class="btn btn-ghost drawer-button lg:hidden">
+        <div class="flex items-center gap-2 lg:px-4">
+            <label for="admin-drawer" class="btn btn-ghost p-0 drawer-button lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
+                    stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
             </label>
+
+            <h3 class="font-bold truncate flex-none w-40 lg:w-auto text-lg flex-grow">{{ config('alive.page_title', '')  }}</h3>
         </div>
         <div class="flex-grow">
 

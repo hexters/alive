@@ -1,7 +1,9 @@
 <div class="bg-neutral text-neutral-content duration-300 {{ $hide ? 'w-[57px]' : 'w-[250px]' }} min-h-full">
 
     <div class="hidden lg:flex justify-between items-center p-4 mb-4">
-        <strong class="text-xl truncate">{{ $hide ? Str::of(config('app.name'))->substr(0,1) : config('app.name') }}</strong>
+        <a href="{{ route('alive.welcome') }}" wire:navigate>
+            <strong class="text-xl truncate">{{ $hide ? Str::of(config('app.name'))->substr(0,1) : config('app.name') }}</strong>
+        </a>
         <label class="btn -me-8 btn-sm btn-circle swap swap-rotate">
 
             <!-- this hidden checkbox controls the state -->
