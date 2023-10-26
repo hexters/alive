@@ -1,3 +1,3 @@
 <div>
-    ROle
+    <livewire:alive-role-table/>
 </div>

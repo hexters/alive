@@ -2,12 +2,14 @@
 
 namespace Modules\Alive\Providers;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Modules\Alive\Livewire\Components\Flash;
 use Modules\Alive\Livewire\Components\Navbar;
 use Modules\Alive\Livewire\Components\Sidebar;
+use Modules\Alive\Livewire\Tables\RoleTable;
 
 class AliveServiceProvider extends ServiceProvider
 {
@@ -42,6 +44,8 @@ class AliveServiceProvider extends ServiceProvider
         $this->registerCommand();
 
         $this->registerLivewireComponents();
+
+        $this->registerLivewireTables();
     }
 
     /**
@@ -129,6 +133,20 @@ class AliveServiceProvider extends ServiceProvider
             } else {
                 Livewire::component("alive-{$alias}", $component);
             }
+        }
+    }
+
+    protected function registerLivewireTables()
+    {
+        if (is_dir($tables = module_path('Alive', 'Livewire/Tables'))) {
+            collect(File::allFiles($tables))->each(function ($file) {
+                $class = Str::of($file->getFileName())->replace('.php', '');
+                $namespace = "Modules\\Alive\\Livewire\\Tables\\{$class}";
+                if (class_exists($namespace)) {
+                    $componentName = $class->snake('-');
+                    Livewire::component("alive-{$componentName}", $namespace);
+                }
+            });
         }
     }
 }

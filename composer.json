@@ -30,5 +30,7 @@
             "aliases": []
         }
     },
-    "require": {}
+    "require": {
+        "ramonrietdijk/livewire-tables": "^3.7"
+    }
 }
