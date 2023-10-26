@@ -20,7 +20,7 @@ class Role extends AliveMenu
 
     protected function badge()
     {
-        return [9, 'badge badge-sm badge-error text-white'];
+        return null;
     }
 
     protected function route()

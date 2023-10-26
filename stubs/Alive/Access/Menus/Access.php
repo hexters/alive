@@ -3,7 +3,6 @@
 namespace Modules\Alive\Access\Menus;
 
 use Hexters\Alive\Foundation\AliveMenu;
-use Modules\Member\Access\Menus\Admin;
 
 class Access extends AliveMenu
 {
@@ -22,7 +21,7 @@ class Access extends AliveMenu
 
     protected function badge()
     {
-        return [9, 'badge badge-sm badge-error text-white'];
+        return null;
     }
     
     protected function route()
@@ -34,7 +33,6 @@ class Access extends AliveMenu
     {
         return [
             Role::class,
-            Admin::class,
         ];
     }
     
