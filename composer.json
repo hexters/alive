@@ -1,7 +1,7 @@
 {
     "name": "hexters/alive",
     "type": "library",
-    "description": "",
+    "description": "Create a livewire admin panel in the blink of an eye.",
     "license": "MIT",
     "keywords": [
         "Laravel Admin",
