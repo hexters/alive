@@ -25,7 +25,7 @@ class Role extends AliveMenu
 
     protected function route()
     {
-        return route('alive.role');
+        return route('alive.role.index');
     }
     
     protected function permissions()

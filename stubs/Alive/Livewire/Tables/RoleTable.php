@@ -19,12 +19,14 @@ class RoleTable extends LivewireTable
     protected bool $useReordering = true;
 
     protected string $reorderingColumn = 'id';
-    
+
     protected function columns(): array
     {
         return [
+            Column::make(__('ID'), 'id')
+                ->sortable(),
             Column::make(__('Name'), 'name')
-            ->sortable(),
+                ->sortable(),
         ];
     }
 
@@ -39,16 +41,14 @@ class RoleTable extends LivewireTable
     {
         return [
             Action::make(__('My Action'), 'my_action', function (Enumerable $models): void {
-                dd($models);
             }),
             Action::make(__('Import'), 'import', function (Enumerable $models): void {
-                dd($models);
             })->standalone(),
         ];
     }
 
     public function link(Model $model): ?string
     {
-        return route('alive.welcome', ['model' => $model->ulid]);
+        return route('alive.role.show', $model->ulid);
     }
 }

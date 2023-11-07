@@ -31,6 +31,7 @@
         }
     },
     "require": {
-        "ramonrietdijk/livewire-tables": "^3.7"
+        "ramonrietdijk/livewire-tables": "^3.7",
+        "hexters/wirehmvc": "1.0.*"
     }
 }

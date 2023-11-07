@@ -19,18 +19,18 @@ class AccountSeed extends Seeder
      */
     public function run()
     {
-
+        $menus = alive()->menus();
         $role = AliveRole::create([
             'name' => 'Super User',
             'description' => '',
-            'menus' => $menus = alive()->menus(),
+            'menus' => [],
             'gates' => alive()->gates($menus),
         ]);
 
         $role2 = AliveRole::create([
             'name' => 'member',
             'description' => '',
-            'menus' => $menus = alive()->menus(),
+            'menus' => [],
             'gates' => alive()->gates($menus),
         ]);
 

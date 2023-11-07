@@ -13,7 +13,7 @@ class Sidebar extends Component
 {
 
     public $hide = false;
-    
+
     public $menus = [];
 
     public AliveAccount $user;
@@ -49,17 +49,20 @@ class Sidebar extends Component
 
     protected function initMenuProcess($menus)
     {
-        return collect($menus)->map(function ($menu) {
-
-
-            $active = strlen($menu['path']) > 0 && request()->is($menu['path'] . '*');
-            return [
-                ...$menu,
-                "active" => $active,
-                'submenu' => count($menu['submenu']) > 0 ? $submenus = $this->initMenuProcess($menu['submenu']) : $submenus = [],
-                'open' => !$this->hide && collect($submenus)->some('active', '=', 'true'),
-            ];
-        });
+        return collect($menus)
+            ->filter(function ($menu) {
+                return in_array($menu['gate'], $this->user->permissions());
+            })
+            ->sortBy('sort')
+            ->map(function ($menu) {
+                $active = strlen($menu['path']) > 0 && request()->is($menu['path'] . '*');
+                return [
+                    ...$menu,
+                    "active" => $active,
+                    'submenu' => count($menu['submenu']) > 0 ? $submenus = $this->initMenuProcess($menu['submenu']) : $submenus = [],
+                    'open' => !$this->hide && collect($submenus)->some('active', '=', 'true'),
+                ];
+            });
     }
 
 

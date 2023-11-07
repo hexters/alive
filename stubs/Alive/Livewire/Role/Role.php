@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Alive\Livewire;
+namespace Modules\Alive\Livewire\Role;
 
 use Hexters\Alive\Attributes\PageTitle;
 use Hexters\Wirehmvc\Component;

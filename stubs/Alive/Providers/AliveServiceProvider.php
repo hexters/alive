@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Modules\Alive\Console\Commands\AliveAccountCommand;
 use Modules\Alive\Livewire\Components\Flash;
 use Modules\Alive\Livewire\Components\Navbar;
 use Modules\Alive\Livewire\Components\Sidebar;
@@ -72,7 +73,7 @@ class AliveServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                // InstallCommand::class,
+                AliveAccountCommand::class,
             ]);
         }
     }

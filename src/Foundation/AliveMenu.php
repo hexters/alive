@@ -15,6 +15,8 @@ abstract class AliveMenu
 
     protected $target = '_self';
 
+    protected $sort = 10000;
+
     abstract protected function route();
 
     abstract protected function icon();
@@ -76,6 +78,7 @@ abstract class AliveMenu
             'type' => 'menu',
             'open' => false,
             'path' => $path,
+            'sort' => $this->sort,
             'divider' => $divider,
             'gate' => $this->gate,
             'name' => __($this->name),

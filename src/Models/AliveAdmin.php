@@ -23,9 +23,11 @@ class AliveAdmin extends Authenticatable
 
     public function menus()
     {
+        $default = alive()->menus();
         $menus = [];
         foreach ($this->roles as $role) {
-            $menus = array_replace_recursive($menus, $role->menus);
+            $parseMenus = count($role->menus) > 0 ? $role->menus : $default;
+            $menus = array_replace_recursive($menus, $parseMenus);
         }
         return $menus;
     }
@@ -36,6 +38,6 @@ class AliveAdmin extends Authenticatable
         foreach ($this->roles as $role) {
             $gates = array_replace_recursive($gates, $role->gates);
         }
-        return (Array) array_unique($gates);
+        return (array) array_unique($gates);
     }
 }
